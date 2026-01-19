@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SliderPage extends StatefulWidget {
   const SliderPage({super.key});
@@ -19,7 +20,7 @@ class _SliderPageState extends State<SliderPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'القيمة: ${value.toInt()}',
+              '${'value'.tr}: ${value.toInt()}',
               style: const TextStyle(fontSize: 20),
             ),
             Slider(

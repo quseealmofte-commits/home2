@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'home_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -15,7 +16,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('تسجيل الدخول'),
+        title: Text('login'.tr),
         centerTitle: true,
       ),
       body: Padding(
@@ -25,9 +26,9 @@ class _LoginPageState extends State<LoginPage> {
           children: [
             TextField(
               controller: usernameController,
-              decoration: const InputDecoration(
-                labelText: 'اسم المستخدم',
-                border: OutlineInputBorder(),
+              decoration: InputDecoration(
+                labelText: 'username'.tr,
+                border: const OutlineInputBorder(),
               ),
             ),
             const SizedBox(height: 20),
@@ -44,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
                   );
                 }
               },
-              child: const Text('دخول'),
+              child: Text('login'.tr),
             ),
           ],
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'image_picker_page.dart';
 import 'slider_page.dart';
 
@@ -12,8 +13,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int selectedIndex = 3;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +24,7 @@ class _HomePageState extends State<HomePage> {
         iconTheme: const IconThemeData(color: Colors.black),
         centerTitle: true,
         title: Text(
-          'مرحبا ${widget.username}',
+          '${"home_hello".tr} ${widget.username}',
           style: const TextStyle(color: Colors.black),
         ),
       ),
@@ -35,15 +34,27 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: [
               const SizedBox(height: 20),
-              drawerItem(Icons.home, 'القائمة الرئيسية'),
-              drawerItem(Icons.person, 'ملفي الشخصي'),
-              drawerItem(Icons.language, 'تغيير اللغة'),
-              drawerItem(Icons.link, 'تفاصيل الاشتراكات'),
-              drawerItem(Icons.group, 'خدمة الأهل والأصدقاء'),
-              drawerItem(Icons.call, 'خدمة اتصل بي'),
-              drawerItem(Icons.account_balance_wallet, 'خدمة تمار'),
-              drawerItem(Icons.exit_to_app, 'خروج'),
-              drawerItem(Icons.share, 'شارك التطبيق'),
+              drawerItem(Icons.home, 'drawer_home'.tr),
+              drawerItem(Icons.person, 'drawer_profile'.tr),
+
+              ListTile(
+                leading: const Icon(Icons.language),
+                title: Text('drawer_lang'.tr),
+                onTap: () {
+                  if (Get.locale!.languageCode == 'ar') {
+                    Get.updateLocale(const Locale('en', 'US'));
+                  } else {
+                    Get.updateLocale(const Locale('ar', 'EG'));
+                  }
+                },
+              ),
+
+              drawerItem(Icons.link, 'drawer_sub'.tr),
+              drawerItem(Icons.group, 'drawer_friends'.tr),
+              drawerItem(Icons.call, 'drawer_call'.tr),
+              drawerItem(Icons.account_balance_wallet, 'drawer_tamar'.tr),
+              drawerItem(Icons.exit_to_app, 'drawer_logout'.tr),
+              drawerItem(Icons.share, 'drawer_share'.tr),
             ],
           ),
         ),
@@ -69,7 +80,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 );
               },
-              child: const Text('اختيار صوره'),
+              child: Text('pick_image'.tr),
             ),
 
             ElevatedButton(
@@ -81,12 +92,11 @@ class _HomePageState extends State<HomePage> {
                   ),
                 );
               },
-              child: const Text(' Slider'),
+              child: const Text('Slider'),
             ),
           ],
         ),
       ),
-
     );
   }
 
